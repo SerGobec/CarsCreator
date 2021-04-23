@@ -1,0 +1,12 @@
+C:\Studying3\kursova\CarsCreator\CarsCreator\bin\Debug\CarsCreator.exe.config
+C:\Studying3\kursova\CarsCreator\CarsCreator\bin\Debug\CarsCreator.exe
+C:\Studying3\kursova\CarsCreator\CarsCreator\bin\Debug\CarsCreator.pdb
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.csprojAssemblyReference.cache
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.Properties.Resources.resources
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.csproj.GenerateResource.cache
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.csproj.CoreCompileInputs.cache
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.exe
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.pdb
+C:\Studying3\kursova\CarsCreator\CarsCreator\obj\Debug\CarsCreator.Form1.resources
+C:\Studying3\kursova\CarsCreator\CarsCreator\bin\Debug\Database1.mdf
+C:\Studying3\kursova\CarsCreator\CarsCreator\bin\Debug\Database1_log.ldf
