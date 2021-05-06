@@ -61,6 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="askCarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="askCarForm.Designer.cs">
+      <DependentUpon>askCarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="choseDisk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="choseDisk.Designer.cs">
+      <DependentUpon>choseDisk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="askCarForm.resx">
+      <DependentUpon>askCarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="choseDisk.resx">
+      <DependentUpon>choseDisk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +98,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,6 +121,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="img\elements\xeon\xG.png" />
+    <None Include="img\elements\xeon\xC.png" />
+    <None Include="img\elements\tv\tvGrey.png" />
+    <None Include="img\elements\tv\tvColor.png" />
+    <None Include="img\elements\sonar\sonarG.png" />
+    <None Include="img\elements\sonar\sonarC.png" />
+    <None Include="img\elements\sit\sitGrey.png" />
+    <None Include="img\elements\sit\sitColor.png" />
+    <None Include="img\elements\sab\sabGrey.png" />
+    <None Include="img\elements\sab\sabColor.png" />
+    <None Include="img\cars\bmwx3.png" />
+    <None Include="Resources\BMWX3.bmp" />
+    <None Include="img\elements\signal\sG.png" />
+    <None Include="img\elements\signal\sColor.png" />
+    <None Include="img\cars\car_default.png" />
+    <None Include="img\elements\carter\carC.png" />
+    <None Include="img\elements\carter\carG.png" />
+    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
