@@ -13,10 +13,13 @@ namespace CarsCreator
 {
     public partial class askCarForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Studying3\kursova\CarsCreator\CarsCreator\Database1.mdf;Integrated Security = True");
+        SqlConnection con;
+        String strConnection;
         public String rez;
         public askCarForm()
         {
+            strConnection = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + "\\Database1.mdf" + ";Integrated Security = True";
+            con = new SqlConnection(strConnection);
             InitializeComponent();
         }
 

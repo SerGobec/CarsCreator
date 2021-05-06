@@ -14,10 +14,13 @@ namespace CarsCreator
     
     public partial class Form1 : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Studying3\kursova\CarsCreator\CarsCreator\Database1.mdf;Integrated Security = True");
+        SqlConnection con;
+        String strConnection;
         public carSet carset;
         public Form1()
         {
+            strConnection = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + "\\Database1.mdf" + ";Integrated Security = True";
+            con = new SqlConnection(strConnection);
             carset = new carSet();
             InitializeComponent();
             this.header.MouseDown += new MouseEventHandler((o, e) =>
@@ -38,10 +41,16 @@ namespace CarsCreator
             this.carset.carter = !this.carset.carter;
             if (carset.carter)
             {
+                this.carterP.Text = "+ 115$";
+                this.carterP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));           
+                this.carterP.ForeColor= System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.carterPanel.BackgroundImage = global::CarsCreator.Properties.Resources.carC;
             } else
             {
                 this.carterPanel.BackgroundImage = global::CarsCreator.Properties.Resources.carG;
+                this.carterP.Text = "no";
+                this.carterP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.carterP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
         //
@@ -66,11 +75,17 @@ namespace CarsCreator
             this.carset.signal = !this.carset.signal;
             if (carset.signal)
             {
+                this.SignalP.Text = "+ 203$";
+                this.SignalP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.SignalP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.signalingPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sColor;
             }
             else
             {
                 this.signalingPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sG;
+                this.SignalP.Text = "no";
+                this.SignalP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.SignalP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -86,13 +101,44 @@ namespace CarsCreator
                         String path = @"..\\carsModel\" + this.carset.model + ".png";
                         try
                         {
+                            
                             Bitmap bmp = new Bitmap(path);
                             carPanel.BackgroundImage = bmp;
+                            
                         } catch
                         {
                             carPanel.BackgroundImage = Properties.Resources.car_default;
                         }
-                        
+                        this.ModelLabelInfo.Text = this.carset.model;
+                        this.ModelLabelInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(120)))));
+                       
+                        this.engineBox.Items.Clear();
+                        con.Open();
+                        int carsID = -1;
+                        //String cmndStr = "Select engineValue from CarsGeneration where carsID = " + carsID;
+                        String cmndStr = "Select id from Cars where fName = \'" + carset.model + "\'";
+                        SqlCommand cmnd = new SqlCommand(cmndStr, con);
+                        using (SqlDataReader reader = cmnd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {  
+                                carsID = (int)reader.GetValue(0);
+                            }
+                        }
+                        cmndStr = "Select engineValue from CarsGeneration where carsID = " + carsID;
+                        cmnd = new SqlCommand(cmndStr, con);
+                        using (SqlDataReader reader = cmnd.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                engineBox.Items.Add(reader.GetValue(0));
+                            }
+                        }
+                        con.Close();
+                        this.engineBox.Visible = true;
+                        this.label3.Visible = true;
+                        this.priceEngineLabel.Visible = false;
+                        this.carset.priceWithEngine = 0;
                     } else
                     {
                         MessageBox.Show("You have to chose model of car");
@@ -120,11 +166,17 @@ namespace CarsCreator
             this.carset.sab = !this.carset.sab;
             if (carset.sab)
             {
+                this.AudioP.Text = "+ 55$";
+                this.AudioP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.AudioP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.sabPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sabColor;
             }
             else
             {
                 this.sabPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sabGrey;
+                this.AudioP.Text = "no";
+                this.AudioP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.AudioP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -133,11 +185,17 @@ namespace CarsCreator
             this.carset.sit = !this.carset.sit;
             if (carset.sit)
             {
+                this.HeatingP.Text = "+ 72$";
+                this.HeatingP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.HeatingP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.sitPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sitColor;
             }
             else
             {
                 this.sitPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sitGrey;
+                this.HeatingP.Text = "no";
+                this.HeatingP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.HeatingP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -146,11 +204,17 @@ namespace CarsCreator
             this.carset.sonar = !this.carset.sonar;
             if (carset.sonar)
             {
+                this.ParkP.Text = "+ 90$";
+                this.ParkP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.ParkP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.sonarPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sonarC;
             }
             else
             {
                 this.sonarPanel.BackgroundImage = global::CarsCreator.Properties.Resources.sonarG;
+                this.ParkP.Text = "no";
+                this.ParkP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.ParkP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -159,11 +223,17 @@ namespace CarsCreator
             this.carset.tv = !this.carset.tv;
             if (carset.tv)
             {
+                this.TVP.Text = "+ 232$";
+                this.TVP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.TVP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.tvPanel.BackgroundImage = global::CarsCreator.Properties.Resources.tvColor;
             }
             else
             {
                 this.tvPanel.BackgroundImage = global::CarsCreator.Properties.Resources.tvGrey;
+                this.TVP.Text = "no";
+                this.TVP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.TVP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -172,11 +242,17 @@ namespace CarsCreator
             this.carset.xeon = !this.carset.xeon;
             if (carset.xeon)
             {
+                this.XenP.Text = "+ 61$";
+                this.XenP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.XenP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                 this.xeonPanel.BackgroundImage = global::CarsCreator.Properties.Resources.xC;
             }
             else
             {
                 this.xeonPanel.BackgroundImage = global::CarsCreator.Properties.Resources.xG;
+                this.XenP.Text = "no";
+                this.XenP.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.XenP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
@@ -189,18 +265,23 @@ namespace CarsCreator
                     if (askd.diskIndex != -1)
                     {
                         this.carset.diskIndex = askd.diskIndex;
-                        /*String path = @"..\\carsModel\" + this.carset.model + ".png";
-                        try
-                        {
-                            Bitmap bmp = new Bitmap(path);
-                            carPanel.BackgroundImage = bmp;
-                        }
-                        catch
-                        {
-                            carPanel.BackgroundImage = Properties.Resources.car_default;
-                        }*/
                         this.diskLabel.ImageIndex = carset.diskIndex;
                         this.diskLabel.Text = "";
+                        this.promptToDisk.Visible = false;
+                        con.Open();
+                        String cmndStr = "Select price from DiskPrice where idDisk = " + askd.diskIndex;
+                        SqlCommand cmnd = new SqlCommand(cmndStr, con);
+                        using (SqlDataReader reader = cmnd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                this.carset.diskPrice = (int)reader.GetValue(0);
+                            }
+                        }
+                        con.Close();
+                        this.DisksPriceLabel.Text = "+" + this.carset.diskPrice + "$";
+                        this.DisksPriceLabel.Visible = true;
+                        this.DisksPriceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
                     }
                     else
                     {
@@ -208,6 +289,35 @@ namespace CarsCreator
                     }
                 }
             }
+        }
+
+        private void engineBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            con.Open();
+            
+            int carsID = -1;
+            //String cmndStr = "Select engineValue from CarsGeneration where carsID = " + carsID;
+            String cmndStr = "Select id from Cars where fName = \'" + carset.model + "\'";
+            SqlCommand cmnd = new SqlCommand(cmndStr, con);
+            using (SqlDataReader reader = cmnd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    carsID = (int)reader.GetValue(0);
+                }
+            }
+            cmndStr = "Select price from CarsGeneration where carsID = " + carsID + "and engineValue = " + this.engineBox.Text;
+            cmnd = new SqlCommand(cmndStr, con);
+            using (SqlDataReader reader = cmnd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    this.priceEngineLabel.Text = "+ " + (int)reader.GetValue(0) + "$";
+                    this.carset.priceWithEngine = (int)reader.GetValue(0);
+                }
+            }
+            con.Close();
+            this.priceEngineLabel.Visible = true;
         }
     }
 
@@ -221,6 +331,9 @@ namespace CarsCreator
         public bool tv = false;
         public bool xeon = false;
         public String model = "";
+        public int engineValue = 0;
+        public int priceWithEngine = 0;
         public int diskIndex = 0;
+        public int diskPrice = 0;
     } 
 }
