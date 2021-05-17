@@ -42,6 +42,24 @@ namespace CarsCreator
         private void button1_Click(object sender, EventArgs e)
         {
             this.rez = comboBox1.Text;
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.rez = comboBox1.Text;
+            String path = @"..\\carsModel\" + this.comboBox1.Text + ".png";
+            try
+            {
+
+                Bitmap bmp = new Bitmap(path);
+                smallCarPanel.BackgroundImage = bmp;
+
+            }
+            catch
+            {
+                smallCarPanel.BackgroundImage = Properties.Resources.car_default;
+            }
         }
     }
 }

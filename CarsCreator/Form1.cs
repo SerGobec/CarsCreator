@@ -282,6 +282,7 @@ namespace CarsCreator
                         this.DisksPriceLabel.Text = "+" + this.carset.diskPrice + "$";
                         this.DisksPriceLabel.Visible = true;
                         this.DisksPriceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(150)))), ((int)(((byte)(120)))));
+                        this.setDeafaultDisksButton.Visible = true;
                     }
                     else
                     {
@@ -318,6 +319,14 @@ namespace CarsCreator
             }
             con.Close();
             this.priceEngineLabel.Visible = true;
+        }
+
+        private void setDeafaultDisksButton_Click(object sender, EventArgs e)
+        {
+            this.setDeafaultDisksButton.Visible = false;
+            this.diskLabel.ImageIndex = 14;
+            this.DisksPriceLabel.Text = "default";
+            this.DisksPriceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
         }
     }
 

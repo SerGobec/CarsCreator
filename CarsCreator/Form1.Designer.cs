@@ -72,6 +72,7 @@ namespace CarsCreator
             this.carModelLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.promptToDisk = new System.Windows.Forms.Label();
+            this.setDeafaultDisksButton = new System.Windows.Forms.Button();
             this.header.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.SuspendLayout();
@@ -428,9 +429,9 @@ namespace CarsCreator
             this.DisksPriceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.DisksPriceLabel.Location = new System.Drawing.Point(75, 171);
             this.DisksPriceLabel.Name = "DisksPriceLabel";
-            this.DisksPriceLabel.Size = new System.Drawing.Size(133, 20);
+            this.DisksPriceLabel.Size = new System.Drawing.Size(76, 20);
             this.DisksPriceLabel.TabIndex = 7;
-            this.DisksPriceLabel.Text = "Isn`t chosen";
+            this.DisksPriceLabel.Text = "default";
             // 
             // label4
             // 
@@ -524,12 +525,26 @@ namespace CarsCreator
             this.promptToDisk.TabIndex = 11;
             this.promptToDisk.Text = "Click for ↑         chose disks";
             // 
+            // setDeafaultDisksButton
+            // 
+            this.setDeafaultDisksButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
+            this.setDeafaultDisksButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.setDeafaultDisksButton.Location = new System.Drawing.Point(322, 664);
+            this.setDeafaultDisksButton.Name = "setDeafaultDisksButton";
+            this.setDeafaultDisksButton.Size = new System.Drawing.Size(127, 32);
+            this.setDeafaultDisksButton.TabIndex = 12;
+            this.setDeafaultDisksButton.Text = "SET DEFAULT";
+            this.setDeafaultDisksButton.UseVisualStyleBackColor = false;
+            this.setDeafaultDisksButton.Visible = false;
+            this.setDeafaultDisksButton.Click += new System.EventHandler(this.setDeafaultDisksButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.setDeafaultDisksButton);
             this.Controls.Add(this.promptToDisk);
             this.Controls.Add(this.infoPanel);
             this.Controls.Add(this.diskLabel);
@@ -596,6 +611,7 @@ namespace CarsCreator
         private Label AudioP;
         private Label SignalP;
         private Label carterP;
+        private Button setDeafaultDisksButton;
     }
 }
 
