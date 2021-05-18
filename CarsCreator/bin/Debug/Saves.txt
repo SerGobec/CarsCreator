@@ -1,0 +1,2 @@
+Kia Forte;173;4;False;True;False;True;True;True;False
+Hyundai Santa Fe;0;14;False;False;False;False;False;False;False

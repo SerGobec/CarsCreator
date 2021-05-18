@@ -49,6 +49,10 @@ namespace CarsCreator
             this.diskLabel = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.infoPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.ResultLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.XenP = new System.Windows.Forms.Label();
             this.TVP = new System.Windows.Forms.Label();
             this.ParkP = new System.Windows.Forms.Label();
@@ -241,6 +245,10 @@ namespace CarsCreator
             this.infoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(225)))));
             this.infoPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.infoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.infoPanel.Controls.Add(this.button1);
+            this.infoPanel.Controls.Add(this.SaveButton);
+            this.infoPanel.Controls.Add(this.ResultLabel);
+            this.infoPanel.Controls.Add(this.label12);
             this.infoPanel.Controls.Add(this.XenP);
             this.infoPanel.Controls.Add(this.TVP);
             this.infoPanel.Controls.Add(this.ParkP);
@@ -267,6 +275,54 @@ namespace CarsCreator
             this.infoPanel.Name = "infoPanel";
             this.infoPanel.Size = new System.Drawing.Size(254, 630);
             this.infoPanel.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(225)))));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.button1.Location = new System.Drawing.Point(7, 581);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 44);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "OPEN";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.OpenModel);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(225)))));
+            this.SaveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.SaveButton.Location = new System.Drawing.Point(6, 535);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(106, 39);
+            this.SaveButton.TabIndex = 24;
+            this.SaveButton.Text = "SAVE";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveModel);
+            // 
+            // ResultLabel
+            // 
+            this.ResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultLabel.ForeColor = System.Drawing.Color.ForestGreen;
+            this.ResultLabel.Location = new System.Drawing.Point(27, 479);
+            this.ResultLabel.Name = "ResultLabel";
+            this.ResultLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ResultLabel.Size = new System.Drawing.Size(200, 53);
+            this.ResultLabel.TabIndex = 23;
+            this.ResultLabel.Text = "label13";
+            this.ResultLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ResultLabel.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label12.Location = new System.Drawing.Point(8, 454);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 25);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Result:";
             // 
             // XenP
             // 
@@ -559,6 +615,7 @@ namespace CarsCreator
             this.Controls.Add(this.header);
             this.ForeColor = System.Drawing.Color.Cyan;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -612,6 +669,10 @@ namespace CarsCreator
         private Label SignalP;
         private Label carterP;
         private Button setDeafaultDisksButton;
+        private Label label12;
+        private Label ResultLabel;
+        private Button SaveButton;
+        private Button button1;
     }
 }
 

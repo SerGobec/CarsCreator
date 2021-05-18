@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CarsCreator.Services;
 
 namespace CarsCreator
 {
@@ -16,15 +17,13 @@ namespace CarsCreator
         //  AttachDbFilename=C:\Studying3\kursova\CarsCreator\CarsCreator\Database1.mdf
         //
         // public String wayto;
-        String strConnection;
-        SqlConnection con;
+        SqlService sqlservice;
         public int diskIndex = 0;
         public choseDisk()
         {
+            sqlservice = new SqlService();
            // MessageBox.Show(wayto);
-           // wayto = Application.StartupPath + "\\Database1.mdf";
-            strConnection = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + "\\Database1.mdf"  + ";Integrated Security = True";
-            con = new SqlConnection(strConnection);      
+           // wayto = Application.StartupPath + "\\Database1.mdf";  
             InitializeComponent();
         }
 
@@ -36,18 +35,7 @@ namespace CarsCreator
             {
                 diskIndex = 0;
             }
-            con.Open();
-            String cmndStr = "Select price from DiskPrice where idDisk = " + diskIndex;
-            SqlCommand cmnd = new SqlCommand(cmndStr, con);
-            using (SqlDataReader reader = cmnd.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    // Console.WriteLine(String.Format("{0}", reader[0]));
-                    label2.Text = (int)reader.GetValue(0) + "$";
-                }
-            }
-            con.Close();
+            label2.Text = sqlservice.GetPriceOfDiskbyIndex(diskIndex)+"$";     
             this.disk.ImageIndex = diskIndex;
         }
 
@@ -58,19 +46,13 @@ namespace CarsCreator
             {
                 diskIndex = 13;
             }
-            con.Open();
-            String cmndStr = "Select price from DiskPrice where idDisk = " + diskIndex;
-            SqlCommand cmnd = new SqlCommand(cmndStr, con);
-            using (SqlDataReader reader = cmnd.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    // Console.WriteLine(String.Format("{0}", reader[0]));
-                    label2.Text = (int)reader.GetValue(0) + "$";
-                }
-            }
-            con.Close();
+            label2.Text = sqlservice.GetPriceOfDiskbyIndex(diskIndex) + "$";
             this.disk.ImageIndex = diskIndex;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
